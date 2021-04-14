@@ -5,19 +5,9 @@ using UnityEngine;
 public class AreaController : MonoBehaviour
 {
     [SerializeField] string thisColor;
-    public int boms;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public int bomsCount;
+    GameObject[] boms = new GameObject[5];
+    int i = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Enter");
@@ -27,8 +17,17 @@ public class AreaController : MonoBehaviour
         }
         else
         {
-            boms += 1;
-            Debug.Log(boms);
+            boms[i] = collision.gameObject;
+            i += 1;
+            bomsCount += 1;//カウントアップ関数
+            Debug.Log(bomsCount);
+            if (bomsCount % 5 == 0)
+            {
+                foreach (var item in boms)
+                {
+                    Destroy(item);//5個毎に中にいるボムが消える
+                }
+            }
         }
     }
 }
