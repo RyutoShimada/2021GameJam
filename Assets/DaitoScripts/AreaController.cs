@@ -5,17 +5,13 @@ using UnityEngine;
 public class AreaController : MonoBehaviour
 {
     [SerializeField] string thisColor;
-    public int boms;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int bomsCount = 0;
+    GameObject[] boms = new GameObject[5];
+    GameObject gameManager;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,12 +19,23 @@ public class AreaController : MonoBehaviour
         Debug.Log("Enter");
         if (collision.tag != thisColor)
         {
+            gameManager.GetComponent<DaitoManager>().GameOver();
             Destroy(collision.gameObject);//爆発の処理
         }
         else
         {
-            boms += 1;
-            Debug.Log(boms);
+            boms[bomsCount] = collision.gameObject;
+            bomsCount += 1;
+            gameManager.GetComponent<DaitoManager>().CountUp(); ;//カウントアップ関数
+            Debug.Log("エリア内のボム" + bomsCount);
+            if (bomsCount % 5 == 0)
+            {
+                bomsCount = 0;
+                foreach (var item in boms)
+                {
+                    Destroy(item);//5個毎に中にいるボムが消える
+                }
+            }
         }
     }
 }
