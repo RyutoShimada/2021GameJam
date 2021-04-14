@@ -24,7 +24,7 @@ public class ShimadaManager : MonoBehaviour
     void Update()
     {
         m_time += Time.deltaTime;
-        Debug.Log((int)m_time);
+        //Debug.Log((int)m_time);
         LevelControl();
         Switch();
     }
