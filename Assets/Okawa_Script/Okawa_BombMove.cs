@@ -32,8 +32,17 @@ public class Okawa_BombMove : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "RedCount" || collision.tag == "BlackCount")
+        {
+            time = 0;
+        }
+    }
+
     void Death()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().GameOver();
         Destroy(gameObject,m_destroyTime);
     }
 

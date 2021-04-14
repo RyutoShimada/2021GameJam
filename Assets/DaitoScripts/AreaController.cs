@@ -19,14 +19,14 @@ public class AreaController : MonoBehaviour
         Debug.Log("Enter");
         if (collision.tag != thisColor)
         {
-            gameManager.GetComponent<DaitoManager>().GameOver();
+            gameManager.GetComponent<GameManager>().GameOver();
             Destroy(collision.gameObject);//爆発の処理
         }
         else
         {
             boms[bomsCount] = collision.gameObject;
             bomsCount += 1;
-            gameManager.GetComponent<DaitoManager>().CountUp(); ;//カウントアップ関数
+            gameManager.GetComponent<GameManager>().CountUp(); ;//カウントアップ関数
             Debug.Log("エリア内のボム" + bomsCount);
             if (bomsCount % 5 == 0)
             {

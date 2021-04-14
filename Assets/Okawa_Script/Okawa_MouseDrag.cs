@@ -13,8 +13,14 @@ public class Okawa_MouseDrag : MonoBehaviour
     }
     void OnMouseDrag()
     {
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
         Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + this.offset;
         transform.position = currentPosition;
+    }
+
+    void OnMouseUp()
+    {
+        gameObject.GetComponent<CircleCollider2D>().enabled = true;
     }
 }
