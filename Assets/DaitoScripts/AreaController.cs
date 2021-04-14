@@ -5,24 +5,32 @@ using UnityEngine;
 public class AreaController : MonoBehaviour
 {
     [SerializeField] string thisColor;
-    public int bomsCount;
+    int bomsCount = 0;
     GameObject[] boms = new GameObject[5];
-    int i = 0;
+    GameObject gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Enter");
         if (collision.tag != thisColor)
         {
+            gameManager.GetComponent<DaitoManager>().GameOver();
             Destroy(collision.gameObject);//爆発の処理
         }
         else
         {
-            boms[i] = collision.gameObject;
-            i += 1;
-            bomsCount += 1;//カウントアップ関数
-            Debug.Log(bomsCount);
+            boms[bomsCount] = collision.gameObject;
+            bomsCount += 1;
+            gameManager.GetComponent<DaitoManager>().CountUp(); ;//カウントアップ関数
+            Debug.Log("エリア内のボム" + bomsCount);
             if (bomsCount % 5 == 0)
             {
+                bomsCount = 0;
                 foreach (var item in boms)
                 {
                     Destroy(item);//5個毎に中にいるボムが消える
