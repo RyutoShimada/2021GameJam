@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject m_generator = null;
     [SerializeField] GameObject m_2ndGenerator = null;
+    [SerializeField] GameObject m_explosion;
     BomGenerator m_bomGenerator;
     BomGenerator m_bomGenerator2nd;
+    AudioSource m_source;
     float m_time = 0;
     float m_levelUpInterval = 10;
     int m_level = 1;
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
         m_bomGenerator = m_generator.GetComponent<BomGenerator>();
         m_bomGenerator2nd = m_2ndGenerator.GetComponent<BomGenerator>();
         m_2ndGenerator.gameObject.SetActive(false);
+        m_source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -164,6 +167,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        m_source.Play();
+        m_explosion.SetActive(true);
         Stop();
         gameOverText.SetActive(true);
         Debug.Log("GameOver");
