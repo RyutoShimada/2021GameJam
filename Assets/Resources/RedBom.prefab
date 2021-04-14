@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2289433217976998614}
   - component: {fileID: 2289433217976998615}
   - component: {fileID: -2340778663657040061}
+  - component: {fileID: 4759748700025525347}
   m_Layer: 0
   m_Name: RedBom
   m_TagString: red
@@ -103,3 +104,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4759748700025525347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2289433217976998608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086e8075a58009c43b41f2dfe82d98d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
