@@ -168,6 +168,8 @@ MonoBehaviour:
   - {fileID: 5559303050868657412, guid: 4ea4ed0be1647d54fb53824240721fde, type: 3}
   - {fileID: 2289433217976998608, guid: 7b99e17363cab004fb3b591cc994923a, type: 3}
   m_interval: 1
+  m_addTimeInterval: 10
+  m_subtraction: 0.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
