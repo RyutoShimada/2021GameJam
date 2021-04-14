@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DaitoManager : MonoBehaviour
 {
     int score = 0;
-    bool m_isGameOver = false;
+    [SerializeField] GameObject gameOverText;
+    [SerializeField] GameObject scoreText;
+    TextMeshProUGUI sText;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameOverText.SetActive(false);
+        sText = scoreText.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        sText.text = score.ToString("D3");
     }
 
     public void CountUp()
@@ -26,7 +30,7 @@ public class DaitoManager : MonoBehaviour
 
     public void GameOver()
     {
-        m_isGameOver = true;
+        gameOverText.SetActive(true);
         Debug.Log("GameOver");
     }
 }
